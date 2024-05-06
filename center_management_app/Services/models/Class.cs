@@ -15,6 +15,13 @@ namespace center_management_app.Services.models
 
         public Teacher teacher { get; set; }
 
+
+        public override string ToString() {  return Name; }
+
+        public Class(string name) 
+        {
+            Name = name;
+        }
         public object this[string propertyName]
         {
             get

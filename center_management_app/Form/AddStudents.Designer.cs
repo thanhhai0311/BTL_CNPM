@@ -1,4 +1,9 @@
-﻿namespace center_management_app.Forms
+﻿using center_management_app.Services.models;
+using System;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace center_management_app.Forms
 {
     partial class AddStudentsForm
     {
@@ -84,6 +89,67 @@
             this.simpleButton2.Size = new System.Drawing.Size(118, 31);
             this.simpleButton2.TabIndex = 1;
             this.simpleButton2.Text = "Thêm";
+            this.simpleButton2.Click += simpleButton2_Click;
+            void simpleButton2_Click(object sender, EventArgs e)
+            {
+                // Thực thi khi Button được nhấp
+                string name = txtFullName.Text;
+                string gender = cbGender.Text;
+                DateTime dob = cbDob.DateTime;
+                string phoneNumber = txtPhoneNumber.Text;
+                string address = txtAddress.Text;
+                Class selectedClass = comboBoxEdit2.SelectedItem as Class;
+                //string lop = comboBoxEdit2.SelectedItem.ToString();
+                //MessageBox.Show(lop);
+                //public Student(string phoneNumber, string fullName, string gender, string address, DateTime dob, Class @class)
+                //MessageBox.Show(selectedClass.ToString());
+                // Kiểm tra các trường dữ liệu
+                if (string.IsNullOrEmpty(name))
+                {
+                    MessageBox.Show("Tên học viên không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(gender) || (gender != "Nam" && gender != "Nữ"))
+                {
+                    MessageBox.Show("Giới tính không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (dob == DateTime.MinValue)
+                {
+                    MessageBox.Show("Ngày sinh không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(phoneNumber) || !phoneNumber.All(char.IsDigit))
+                {
+                    MessageBox.Show("Số điện thoại không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(address))
+                {
+                    MessageBox.Show("Địa chỉ không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (selectedClass == null)
+                {
+                    MessageBox.Show("Vui lòng chọn lớp học!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+
+                Student newStudent = new Student(phoneNumber, name, gender, address, dob, selectedClass);
+
+                DialogResult result = MessageBox.Show(newStudent.ToString());
+                if (result == DialogResult.OK)
+                {
+                    // Đóng form hiện tại
+                    this.Close();
+                }
+            }
             // 
             // simpleButton1
             // 
@@ -93,6 +159,12 @@
             this.simpleButton1.Size = new System.Drawing.Size(118, 31);
             this.simpleButton1.TabIndex = 0;
             this.simpleButton1.Text = "Hủy";
+            this.simpleButton1.Click += simpleButton1_Click;
+            void simpleButton1_Click(object sender, EventArgs e)
+            {
+                // Thực thi khi Button được nhấp
+                this.Close();
+            }
             // 
             // panelControl2
             // 
@@ -120,14 +192,27 @@
             this.comboBoxEdit2.Name = "comboBoxEdit2";
             this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            Class lop1 = new Class("Tiếng Anh 1");
+            Class lop2 = new Class("Tiếng Anh 2");
+            Class lop3 = new Class("Tiếng Anh 3");
+            Class lop4 = new Class("Tiếng Trung 1");
+            Class lop5 = new Class("Tiếng Trung 2");
+            //this.comboBoxEdit2.Properties.Items.AddRange(new object[] {
+            //"Tiếng Anh 1",
+            //"Tiếng Anh 2",
+            //"Tiếng Anh 3",
+            //"Tiếng Trung 1",
+            //"Tiếng Trung 2"});
             this.comboBoxEdit2.Properties.Items.AddRange(new object[] {
-            "Tiếng Anh 1",
-            "Tiếng Anh 2",
-            "Tiếng Anh 3",
-            "Tiếng Trung 1",
-            "Tiếng Trung 2"});
+            lop1,
+            lop2, 
+            lop3, 
+            lop4, 
+            lop5
+            });
             this.comboBoxEdit2.Size = new System.Drawing.Size(234, 28);
             this.comboBoxEdit2.TabIndex = 14;
+            comboBoxEdit2.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
             // labelControl7
             // 
@@ -179,6 +264,7 @@
             "Nữ"});
             this.cbGender.Size = new System.Drawing.Size(138, 28);
             this.cbGender.TabIndex = 5;
+            cbGender.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
             // labelControl3
             // 
