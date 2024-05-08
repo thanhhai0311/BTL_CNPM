@@ -24,13 +24,14 @@ namespace center_management_app.Services.models
 
         public string email { get; set; }
 
-        public Student(string phoneNumber, string fullName, string gender, string address, DateTime dob, Class @class)
+        public Student(string fullName, string gender, DateTime dob, string phoneNumber, string email, string address, Class @class)
         {
             this.phoneNumber = phoneNumber;
             this.fullName = fullName;
             this.gender = gender;
             this.address = address;
             this.dob = dob;
+            this.email = email;
             _class = @class;
         }
 
@@ -41,6 +42,7 @@ namespace center_management_app.Services.models
                    $"Giới tính: {gender}\n" +
                    $"Ngày sinh: {dob.ToShortDateString()}\n" +
                    $"Số điện thoại: {phoneNumber}\n" +
+                   $"Email: {email}\n" +
                    $"Địa chỉ: {address}\n" +
                    $"Lớp: {_class?.Name.ToString() ?? "Chưa chọn"}";
         }

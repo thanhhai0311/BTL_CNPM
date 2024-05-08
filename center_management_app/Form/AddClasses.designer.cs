@@ -85,14 +85,16 @@
             this.panelControl1.Controls.Add(this.panelControl3);
             this.panelControl1.Controls.Add(this.comboBoxEdit3);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelControl1.Location = new System.Drawing.Point(881, 0);
+            this.panelControl1.Location = new System.Drawing.Point(1028, 0);
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(431, 477);
+            this.panelControl1.Size = new System.Drawing.Size(503, 587);
             this.panelControl1.TabIndex = 0;
             // 
             // comboBoxEdit1
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(147, 149);
+            this.comboBoxEdit1.Location = new System.Drawing.Point(172, 183);
+            this.comboBoxEdit1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxEdit1.Name = "comboBoxEdit1";
             this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -102,12 +104,13 @@
             "Tiếng Anh 3",
             "Tiếng Trung 1",
             "Tiếng Trung 2"});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(234, 28);
+            this.comboBoxEdit1.Size = new System.Drawing.Size(273, 34);
             this.comboBoxEdit1.TabIndex = 16;
             // 
             // comboBoxEdit2
             // 
-            this.comboBoxEdit2.Location = new System.Drawing.Point(147, 94);
+            this.comboBoxEdit2.Location = new System.Drawing.Point(172, 116);
+            this.comboBoxEdit2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxEdit2.Name = "comboBoxEdit2";
             this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -117,53 +120,59 @@
             "Tiếng Anh 3",
             "Tiếng Trung 1",
             "Tiếng Trung 2"});
-            this.comboBoxEdit2.Size = new System.Drawing.Size(234, 28);
+            this.comboBoxEdit2.Size = new System.Drawing.Size(273, 34);
             this.comboBoxEdit2.TabIndex = 15;
             // 
             // txtFullName
             // 
-            this.txtFullName.Location = new System.Drawing.Point(147, 42);
+            this.txtFullName.Location = new System.Drawing.Point(172, 52);
+            this.txtFullName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(234, 28);
+            this.txtFullName.Size = new System.Drawing.Size(273, 34);
             this.txtFullName.TabIndex = 6;
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(29, 209);
+            this.labelControl5.Location = new System.Drawing.Point(34, 257);
+            this.labelControl5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(23, 13);
+            this.labelControl5.Size = new System.Drawing.Size(30, 16);
             this.labelControl5.TabIndex = 5;
             this.labelControl5.Text = "Sỉ Số";
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(29, 156);
+            this.labelControl4.Location = new System.Drawing.Point(34, 192);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(72, 13);
+            this.labelControl4.Size = new System.Drawing.Size(87, 16);
             this.labelControl4.TabIndex = 4;
             this.labelControl4.Text = "Chọn Giáo Viên";
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(29, 101);
+            this.labelControl3.Location = new System.Drawing.Point(34, 124);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(41, 13);
+            this.labelControl3.Size = new System.Drawing.Size(49, 16);
             this.labelControl3.TabIndex = 3;
             this.labelControl3.Text = "Môn Học";
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(26, 49);
+            this.labelControl2.Location = new System.Drawing.Point(30, 60);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(59, 13);
+            this.labelControl2.Size = new System.Drawing.Size(71, 16);
             this.labelControl2.TabIndex = 2;
             this.labelControl2.Text = "Tên Lớp Học";
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(7, 13);
+            this.labelControl1.Location = new System.Drawing.Point(8, 16);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(67, 13);
+            this.labelControl1.Size = new System.Drawing.Size(82, 16);
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "Thêm Lớp Học";
             // 
@@ -172,17 +181,19 @@
             this.panelControl3.Controls.Add(this.simpleButton1);
             this.panelControl3.Controls.Add(this.simpleButton2);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl3.Location = new System.Drawing.Point(2, 421);
+            this.panelControl3.Location = new System.Drawing.Point(2, 519);
+            this.panelControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(427, 54);
+            this.panelControl3.Size = new System.Drawing.Size(499, 66);
             this.panelControl3.TabIndex = 0;
             // 
             // simpleButton1
             // 
             this.simpleButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-            this.simpleButton1.Location = new System.Drawing.Point(69, 13);
+            this.simpleButton1.Location = new System.Drawing.Point(80, 16);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(118, 31);
+            this.simpleButton1.Size = new System.Drawing.Size(138, 38);
             this.simpleButton1.TabIndex = 3;
             this.simpleButton1.Text = "Hủy";
             // 
@@ -191,11 +202,13 @@
             this.simpleButton2.AppearanceHovered.BackColor = System.Drawing.Color.White;
             this.simpleButton2.AppearanceHovered.Options.UseBackColor = true;
             this.simpleButton2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton2.ImageOptions.SvgImage")));
-            this.simpleButton2.Location = new System.Drawing.Point(261, 13);
+            this.simpleButton2.Location = new System.Drawing.Point(304, 16);
+            this.simpleButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(118, 31);
+            this.simpleButton2.Size = new System.Drawing.Size(138, 38);
             this.simpleButton2.TabIndex = 2;
             this.simpleButton2.Text = "Thêm";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // comboBoxEdit3
             // 
@@ -204,14 +217,15 @@
             0,
             0,
             0});
-            this.comboBoxEdit3.Location = new System.Drawing.Point(147, 202);
+            this.comboBoxEdit3.Location = new System.Drawing.Point(172, 249);
+            this.comboBoxEdit3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxEdit3.Name = "comboBoxEdit3";
             this.comboBoxEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxEdit3.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.comboBoxEdit3.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.comboBoxEdit3.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.comboBoxEdit3.Size = new System.Drawing.Size(98, 28);
+            this.comboBoxEdit3.Size = new System.Drawing.Size(114, 34);
             this.comboBoxEdit3.TabIndex = 17;
             // 
             // panelControl2
@@ -219,19 +233,22 @@
             this.panelControl2.Controls.Add(this.gcGroups);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
+            this.panelControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(881, 477);
+            this.panelControl2.Size = new System.Drawing.Size(1028, 587);
             this.panelControl2.TabIndex = 1;
             // 
             // gcGroups
             // 
             this.gcGroups.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcGroups.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gcGroups.Location = new System.Drawing.Point(2, 2);
             this.gcGroups.MainView = this.gvGroups;
+            this.gcGroups.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gcGroups.Name = "gcGroups";
             this.gcGroups.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.btnDeleteGroup});
-            this.gcGroups.Size = new System.Drawing.Size(877, 473);
+            this.gcGroups.Size = new System.Drawing.Size(1024, 583);
             this.gcGroups.TabIndex = 2;
             this.gcGroups.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvGroups});
@@ -245,6 +262,7 @@
             this.cTotal,
             this.cSubject,
             this.cAction});
+            this.gvGroups.DetailHeight = 431;
             this.gvGroups.GridControl = this.gcGroups;
             this.gvGroups.Name = "gvGroups";
             this.gvGroups.OptionsFind.AllowFindPanel = false;
@@ -254,49 +272,54 @@
             // 
             this.cIndex.Caption = "Chỉ Số";
             this.cIndex.FieldName = "cIndex";
+            this.cIndex.MinWidth = 23;
             this.cIndex.Name = "cIndex";
             this.cIndex.OptionsColumn.AllowEdit = false;
             this.cIndex.Visible = true;
             this.cIndex.VisibleIndex = 0;
-            this.cIndex.Width = 100;
+            this.cIndex.Width = 117;
             // 
             // cClassName
             // 
             this.cClassName.Caption = "Tên Lớp Học";
             this.cClassName.FieldName = "cClassName";
+            this.cClassName.MinWidth = 23;
             this.cClassName.Name = "cClassName";
             this.cClassName.Visible = true;
             this.cClassName.VisibleIndex = 1;
-            this.cClassName.Width = 264;
+            this.cClassName.Width = 308;
             // 
             // cTeacherName
             // 
             this.cTeacherName.Caption = "Giáo Viên";
             this.cTeacherName.FieldName = "cTeacherName";
+            this.cTeacherName.MinWidth = 23;
             this.cTeacherName.Name = "cTeacherName";
             this.cTeacherName.Visible = true;
             this.cTeacherName.VisibleIndex = 2;
-            this.cTeacherName.Width = 435;
+            this.cTeacherName.Width = 507;
             // 
             // cTotal
             // 
             this.cTotal.Caption = "Sỉ Số";
             this.cTotal.FieldName = "cTotal";
+            this.cTotal.MinWidth = 23;
             this.cTotal.Name = "cTotal";
             this.cTotal.OptionsColumn.AllowEdit = false;
             this.cTotal.Visible = true;
             this.cTotal.VisibleIndex = 4;
-            this.cTotal.Width = 94;
+            this.cTotal.Width = 110;
             // 
             // cSubject
             // 
             this.cSubject.Caption = "Môn học";
             this.cSubject.FieldName = "cSubject";
+            this.cSubject.MinWidth = 23;
             this.cSubject.Name = "cSubject";
             this.cSubject.OptionsColumn.AllowEdit = false;
             this.cSubject.Visible = true;
             this.cSubject.VisibleIndex = 3;
-            this.cSubject.Width = 276;
+            this.cSubject.Width = 322;
             // 
             // cAction
             // 
@@ -308,13 +331,14 @@
             this.cAction.Caption = "Hành Động";
             this.cAction.ColumnEdit = this.btnDeleteGroup;
             this.cAction.FieldName = "cAction";
+            this.cAction.MinWidth = 23;
             this.cAction.Name = "cAction";
             this.cAction.OptionsFilter.AllowAutoFilter = false;
             this.cAction.OptionsFilter.AllowFilter = false;
             this.cAction.UnboundType = DevExpress.Data.UnboundColumnType.Object;
             this.cAction.Visible = true;
             this.cAction.VisibleIndex = 5;
-            this.cAction.Width = 135;
+            this.cAction.Width = 157;
             // 
             // btnDeleteGroup
             // 
@@ -328,14 +352,15 @@
             // 
             // AddClassesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1312, 477);
+            this.ClientSize = new System.Drawing.Size(1531, 587);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("AddClassesForm.IconOptions.Icon")));
             this.IconOptions.ShowIcon = false;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "AddClassesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

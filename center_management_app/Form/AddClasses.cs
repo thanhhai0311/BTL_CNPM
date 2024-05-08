@@ -72,5 +72,10 @@ namespace center_management_app.Forms
         private void btnDeleteGroup_Click(object sender, ButtonPressedEventArgs e)
         {
         }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
