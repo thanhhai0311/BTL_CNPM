@@ -2,7 +2,8 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using center_management_app.Services; 
+using center_management_app.Services;
+using System.Collections.Generic;
 
 namespace center_management_app.Forms
 {
@@ -100,7 +101,7 @@ namespace center_management_app.Forms
             this.btnAdd.Size = new System.Drawing.Size(138, 38);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Thêm";
-            this.btnAdd.Click += new System.EventHandler(this.simpleButton2_Click);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnClose
             // 
@@ -140,14 +141,15 @@ namespace center_management_app.Forms
             // 
             // txtID
             // 
+            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(206, 21);
             this.txtID.Margin = new System.Windows.Forms.Padding(4);
             this.txtID.Name = "txtID";
             this.txtID.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtID.Properties.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(105, 34);
             this.txtID.TabIndex = 18;
             this.txtID.EditValueChanged += new System.EventHandler(this.txtID_EditValueChanged);
-            this.txtID.Properties.ReadOnly = true;
             // 
             // lbcID
             // 
@@ -158,7 +160,6 @@ namespace center_management_app.Forms
             this.lbcID.TabIndex = 17;
             this.lbcID.Text = "ID";
             this.lbcID.Click += new System.EventHandler(this.labelControl8_Click);
-            //this.lbcID.Visible = false;
             // 
             // txtEmail
             // 
@@ -189,24 +190,6 @@ namespace center_management_app.Forms
             this.cbClass.Size = new System.Drawing.Size(273, 34);
             this.cbClass.TabIndex = 14;
             this.cbClass.SelectedIndexChanged += new System.EventHandler(this.comboBoxEdit2_SelectedIndexChanged);
-            Class lop1 = new Class("Tiếng Anh 1");
-            Class lop2 = new Class("Tiếng Anh 2");
-            Class lop3 = new Class("Tiếng Anh 3");
-            Class lop4 = new Class("Tiếng Trung 1");
-            Class lop5 = new Class("Tiếng Trung 2");
-            //this.comboBoxEdit2.Properties.Items.AddRange(new object[] {
-            //"Tiếng Anh 1",
-            //"Tiếng Anh 2",
-            //"Tiếng Anh 3",
-            //"Tiếng Trung 1",
-            //"Tiếng Trung 2"});
-            this.cbClass.Properties.Items.AddRange(new object[] {
-            lop1,
-            lop2,
-            lop3,
-            lop4,
-            lop5
-            });
             // 
             // lbcClass
             // 
@@ -306,7 +289,8 @@ namespace center_management_app.Forms
             // 
             // cbDob
             // 
-            this.cbDob.EditValue = new System.DateTime(2024, 4, 24, 18, 56, 11, 0);
+            //this.cbDob.EditValue = new System.DateTime(2024, 4, 24, 18, 56, 11, 0);
+            this.cbDob.EditValue = null;
             this.cbDob.Location = new System.Drawing.Point(206, 145);
             this.cbDob.Margin = new System.Windows.Forms.Padding(4);
             this.cbDob.Name = "cbDob";
@@ -321,6 +305,7 @@ namespace center_management_app.Forms
             this.cbDob.Properties.MaskSettings.Set("mask", "");
             this.cbDob.Size = new System.Drawing.Size(161, 34);
             this.cbDob.TabIndex = 6;
+            this.cbDob.EditValueChanged += new System.EventHandler(this.cbDob_EditValueChanged);
             // 
             // AddStudentsForm
             // 
@@ -359,6 +344,8 @@ namespace center_management_app.Forms
             this.ResumeLayout(false);
 
         }
+
+       
 
         #endregion
         private DevExpress.XtraEditors.XtraOpenFileDialog xtraOpenFileDialog;

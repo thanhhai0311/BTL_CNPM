@@ -22,6 +22,9 @@ namespace center_management_app.Services.models
         {
             Name = name;
         }
+
+        public Class() { }
+
         public object this[string propertyName]
         {
             get

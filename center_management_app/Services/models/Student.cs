@@ -34,7 +34,7 @@ namespace center_management_app.Services.models
             this.email = email;
             _class = @class;
         }
-
+        public Student() { }
 
         public override string ToString()
         {

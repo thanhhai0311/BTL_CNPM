@@ -10,6 +10,9 @@ using center_management_app.Services;
 using center_management_app.Services.models;
 using DevExpress.XtraEditors;
 using center_management_app.Services;
+using center_management_app.Forms;
+using DevExpress.XtraRichEdit.Model;
+using center_management_app.Form;
 
 
 namespace center_management_app.Components
@@ -25,6 +28,7 @@ namespace center_management_app.Components
             InitializeComponent();
             TableInit();
             _Instance = this;
+            LoadData();
         }
 
 
@@ -53,26 +57,17 @@ namespace center_management_app.Components
             gridAccount.DataSource = tableDataSource;
         }
 
-        public void AddStudent(int number, string name, string phoneNumber, string gender, string dob, string status)
+        public void AddStudent(Student stu)
         {
             DataRow newRow = tableDataSource.NewRow();
-            newRow["cNumber"] = number;
-            newRow["cName"] = name;
-            newRow["cPhoneNumber"] = phoneNumber;
-            newRow["cGender"] = gender;
-            newRow["cDob"] = dob;
-            newRow["cStatus"] = status;
+            newRow["cNumber"] = stu.ID;
+            newRow["cName"] = stu.fullName;
+            newRow["cPhoneNumber"] = stu.phoneNumber;
+            newRow["cGender"] = stu.gender;
+            newRow["cDob"] = stu.dob.ToString("dd/MM/yyyy");
+            newRow["cStatus"] = stu._class.Name;
             tableDataSource.Rows.Add(newRow);
         }
-
-        private void btnAddStudent_Click(object sender, EventArgs e)
-        {
-            AddStudent(1, "Nguyen Van A", "0123456789", "Nam", "01/01/1990", "Active");
-        }
-
-        //AddStudent(1, "Hải", "0967726885", "Nam", "2003", "Có");
-   
-
 
         private void cbGroups_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -82,11 +77,19 @@ namespace center_management_app.Components
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            //AddStudent(1, "Nguyen Van A", "0123456789", "Nam", "01/01/1990", "Active");
-            //gridAccount.Refresh();
-            List<Student> a = StudentService.GetAll();
-            MessageBox.Show(a[0].fullName);
+            LoadData();
+        }
 
+       public void LoadData()
+        {
+            tableDataSource.Clear();
+            int sl = StudentService.getSize();
+            List<Student> list = StudentService.GetAll(0, 100000);
+            foreach (Student stu in list)
+            {
+                AddStudent(stu);
+            }
+            gridAccount.Refresh();
         }
 
 
@@ -104,5 +107,94 @@ namespace center_management_app.Components
 
         }
 
+        private void EditInfotoolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var selected = gridView1.GetSelectedRows();
+            if (selected.Length == 1)
+            {
+                DataRowView row = (DataRowView)gridView1.GetRow(selected[0]);
+                var studentID = row[nameof(cNumber)].ToString();
+                if (!String.IsNullOrEmpty(studentID))
+                {
+                    // student in database
+                    var AddForm = new AddStudentsForm();
+                    AddForm.Text = "Chỉnh sửa thông tin học viên";
+                    AddForm.SetButtonName("Lưu");
+                    var list = StudentService.FindByID(studentID);
+                    var st = list[0];
+                    MessageBox.Show(st.ToString());
+                    var addForm = new AddStudentsForm(st);
+                    AddForm.ShowDialog();
+                    
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Chọn 1 học viên để chỉnh sửa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void deleteAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //var selected = gridView1.GetSelectedRows();
+            //bool check = true;
+            //for(int i=0; i<selected.Length; i++)
+            //{
+            //    var studentId = Convert.ToInt32(gridView1.GetRowCellValue(selected[i], "cNumber"));
+            //    //MessageBox.Show(studentId.ToString());
+            //    check = StudentService.Delete(studentId);
+            //    if(!check)
+            //    {
+            //        break;
+            //    }
+            //}
+            //if (check)
+            //{
+            //    LoadData();
+            //    MessageBox.Show("Xóa thành công!");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Xóa không thành công!");
+            //}
+            var selected = gridView1.GetSelectedRows();
+            if (selected.Length == 0)
+            {
+                MessageBox.Show("Vui lòng chọn ít nhất một học viên để xóa.", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Hỏi người dùng có chắc chắn muốn xóa không
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa các học viên đã chọn không?", "Xác Nhận Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                bool check = true;
+                foreach (int rowIndex in selected)
+                {
+                    var studentId = Convert.ToInt32(gridView1.GetRowCellValue(rowIndex, "cNumber"));
+                    check = StudentService.Delete(studentId);
+                    if (!check)
+                    {
+                        MessageBox.Show("Xóa không thành công tại ID: " + studentId, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
+                }
+                if (check)
+                {
+                    LoadData();
+                    MessageBox.Show("Xóa thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Hành động xóa đã bị hủy.", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void reloadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
     }
 }

@@ -59,10 +59,10 @@
             // 
             this.gridAccount.ContextMenuStrip = this.menuAccount;
             this.gridAccount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridAccount.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridAccount.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gridAccount.Location = new System.Drawing.Point(0, 0);
             this.gridAccount.MainView = this.gridView1;
-            this.gridAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridAccount.Margin = new System.Windows.Forms.Padding(4);
             this.gridAccount.Name = "gridAccount";
             this.gridAccount.Size = new System.Drawing.Size(1611, 812);
             this.gridAccount.TabIndex = 0;
@@ -87,6 +87,7 @@
             this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
             this.reloadToolStripMenuItem.Size = new System.Drawing.Size(222, 30);
             this.reloadToolStripMenuItem.Text = "Tải Lại Dữ Liệu";
+            this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadToolStripMenuItem_Click);
             // 
             // EditInfotoolStripMenuItem1
             // 
@@ -94,6 +95,7 @@
             this.EditInfotoolStripMenuItem1.Name = "EditInfotoolStripMenuItem1";
             this.EditInfotoolStripMenuItem1.Size = new System.Drawing.Size(222, 30);
             this.EditInfotoolStripMenuItem1.Text = "Chỉnh Sửa Thông Tin";
+            this.EditInfotoolStripMenuItem1.Click += new System.EventHandler(this.EditInfotoolStripMenuItem1_Click);
             // 
             // deleteAccountToolStripMenuItem
             // 
@@ -101,6 +103,7 @@
             this.deleteAccountToolStripMenuItem.Name = "deleteAccountToolStripMenuItem";
             this.deleteAccountToolStripMenuItem.Size = new System.Drawing.Size(222, 30);
             this.deleteAccountToolStripMenuItem.Text = "Xóa";
+            this.deleteAccountToolStripMenuItem.Click += new System.EventHandler(this.deleteAccountToolStripMenuItem_Click);
             // 
             // gridView1
             // 
@@ -131,6 +134,8 @@
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
             this.gridView1.PreviewIndent = 0;
+            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.cName, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // cNumber
             // 
@@ -194,7 +199,7 @@
             // 
             // cStatus
             // 
-            this.cStatus.Caption = "Trạng thái";
+            this.cStatus.Caption = "Lớp học";
             this.cStatus.FieldName = "cStatus";
             this.cStatus.MinWidth = 23;
             this.cStatus.Name = "cStatus";
@@ -205,7 +210,7 @@
             // cbGroups
             // 
             this.cbGroups.Location = new System.Drawing.Point(645, 16);
-            this.cbGroups.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbGroups.Margin = new System.Windows.Forms.Padding(4);
             this.cbGroups.Name = "cbGroups";
             this.cbGroups.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -216,7 +221,7 @@
             // btnRefresh
             // 
             this.btnRefresh.Location = new System.Drawing.Point(1032, 16);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(170, 34);
             this.btnRefresh.TabIndex = 2;
@@ -261,7 +266,7 @@
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.cbGroups);
             this.Controls.Add(this.gridAccount);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCAccountManager";
             this.Size = new System.Drawing.Size(1611, 812);
             ((System.ComponentModel.ISupportInitialize)(this.gridAccount)).EndInit();

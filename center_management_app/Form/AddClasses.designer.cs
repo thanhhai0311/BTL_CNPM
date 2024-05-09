@@ -86,7 +86,7 @@
             this.panelControl1.Controls.Add(this.comboBoxEdit3);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelControl1.Location = new System.Drawing.Point(1028, 0);
-            this.panelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(4);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(503, 587);
             this.panelControl1.TabIndex = 0;
@@ -94,7 +94,7 @@
             // comboBoxEdit1
             // 
             this.comboBoxEdit1.Location = new System.Drawing.Point(172, 183);
-            this.comboBoxEdit1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxEdit1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxEdit1.Name = "comboBoxEdit1";
             this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -110,7 +110,7 @@
             // comboBoxEdit2
             // 
             this.comboBoxEdit2.Location = new System.Drawing.Point(172, 116);
-            this.comboBoxEdit2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxEdit2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxEdit2.Name = "comboBoxEdit2";
             this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -126,7 +126,7 @@
             // txtFullName
             // 
             this.txtFullName.Location = new System.Drawing.Point(172, 52);
-            this.txtFullName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFullName.Margin = new System.Windows.Forms.Padding(4);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(273, 34);
             this.txtFullName.TabIndex = 6;
@@ -134,7 +134,7 @@
             // labelControl5
             // 
             this.labelControl5.Location = new System.Drawing.Point(34, 257);
-            this.labelControl5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl5.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(30, 16);
             this.labelControl5.TabIndex = 5;
@@ -143,7 +143,7 @@
             // labelControl4
             // 
             this.labelControl4.Location = new System.Drawing.Point(34, 192);
-            this.labelControl4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(87, 16);
             this.labelControl4.TabIndex = 4;
@@ -152,7 +152,7 @@
             // labelControl3
             // 
             this.labelControl3.Location = new System.Drawing.Point(34, 124);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(49, 16);
             this.labelControl3.TabIndex = 3;
@@ -161,7 +161,7 @@
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(30, 60);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(71, 16);
             this.labelControl2.TabIndex = 2;
@@ -170,7 +170,7 @@
             // labelControl1
             // 
             this.labelControl1.Location = new System.Drawing.Point(8, 16);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(82, 16);
             this.labelControl1.TabIndex = 1;
@@ -182,7 +182,7 @@
             this.panelControl3.Controls.Add(this.simpleButton2);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl3.Location = new System.Drawing.Point(2, 519);
-            this.panelControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelControl3.Margin = new System.Windows.Forms.Padding(4);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(499, 66);
             this.panelControl3.TabIndex = 0;
@@ -191,7 +191,7 @@
             // 
             this.simpleButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
             this.simpleButton1.Location = new System.Drawing.Point(80, 16);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(138, 38);
             this.simpleButton1.TabIndex = 3;
@@ -203,7 +203,7 @@
             this.simpleButton2.AppearanceHovered.Options.UseBackColor = true;
             this.simpleButton2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton2.ImageOptions.SvgImage")));
             this.simpleButton2.Location = new System.Drawing.Point(304, 16);
-            this.simpleButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.simpleButton2.Margin = new System.Windows.Forms.Padding(4);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(138, 38);
             this.simpleButton2.TabIndex = 2;
@@ -218,7 +218,7 @@
             0,
             0});
             this.comboBoxEdit3.Location = new System.Drawing.Point(172, 249);
-            this.comboBoxEdit3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxEdit3.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxEdit3.Name = "comboBoxEdit3";
             this.comboBoxEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -233,7 +233,7 @@
             this.panelControl2.Controls.Add(this.gcGroups);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
-            this.panelControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelControl2.Margin = new System.Windows.Forms.Padding(4);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(1028, 587);
             this.panelControl2.TabIndex = 1;
@@ -241,10 +241,10 @@
             // gcGroups
             // 
             this.gcGroups.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcGroups.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gcGroups.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gcGroups.Location = new System.Drawing.Point(2, 2);
             this.gcGroups.MainView = this.gvGroups;
-            this.gcGroups.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gcGroups.Margin = new System.Windows.Forms.Padding(4);
             this.gcGroups.Name = "gcGroups";
             this.gcGroups.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.btnDeleteGroup});
@@ -360,7 +360,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("AddClassesForm.IconOptions.Icon")));
             this.IconOptions.ShowIcon = false;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "AddClassesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

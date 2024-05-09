@@ -11,6 +11,7 @@ namespace center_management_app.Services.models
     {
         public string fullName { get; set; }
 
+        public string gender { get; set; }
         public string phoneNumber { get; set; }
 
         public string email { get; set; }
@@ -18,6 +19,8 @@ namespace center_management_app.Services.models
         public string address { get; set; }
 
         public DateTime dob { get; set; }
+
+        public Teacher() { }
 
         public object this[string propertyName]
         {

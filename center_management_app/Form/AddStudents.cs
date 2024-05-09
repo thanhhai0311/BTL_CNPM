@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using center_management_app.Services.models;
 using DevExpress.XtraEditors;
 using center_management_app.Services;
+using System.Collections.Generic;
+using center_management_app.Components;
 
 namespace center_management_app.Forms
 {
@@ -22,6 +24,12 @@ namespace center_management_app.Forms
 
         private void AddAccounts_Load(object sender, EventArgs e)
         {
+            var allClasses = ClassService.GetAll();
+            foreach (var _class in allClasses)
+            {
+                cbClass.Properties.Items.Add(_class);
+            }
+
         }
 
         private void labelControl7_Click(object sender, EventArgs e)
@@ -40,6 +48,37 @@ namespace center_management_app.Forms
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            // Thực thi khi Button được nhấp
+            this.Close();
+        }
+
+        private void comboBoxEdit2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbcName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtID_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             // Thực thi khi Button được nhấp
             string name = txtFullName.Text.Trim();
@@ -107,39 +146,62 @@ namespace center_management_app.Forms
 
             //StudentService.Add(newStudent);
 
-            DialogResult result = MessageBox.Show(newStudent.ToString());
+            //DialogResult result = MessageBox.Show(newStudent.ToString());
+            bool result = StudentService.Add(newStudent);
+            //MessageBox.Show(result.ToString());
 
-            if (result == DialogResult.OK)
+
+            DialogResult result1;
+
+            if (result)
             {
-                // Đóng form hiện tại
-                this.Close();
+                UCAccountManager.Instance.LoadData();
+
+                result1 = MessageBox.Show("Thêm học viên thành công!");
+                //this.Close();
+                if (result1 == DialogResult.OK)
+                {
+                    this.Close();
+                }
             }
+
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-            // Thực thi khi Button được nhấp
-            this.Close();
-        }
-
-        private void comboBoxEdit2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void labelControl8_Click(object sender, EventArgs e)
+        private void cbDob_EditValueChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void lbcName_Click(object sender, EventArgs e)
+        public void SetButtonName(string newName)
         {
-
+            btnAdd.Text = newName;
         }
 
-        private void txtID_EditValueChanged(object sender, EventArgs e)
+        public AddStudentsForm(Student student)
         {
-
+            this.txtID.Text = student.ID.ToString();
+            this.txtFullName.Text = student.fullName;
+            this.cbGender.Text = student.gender.ToString();
+            this.cbDob.DateTime = student.dob;  
+            this.txtPhoneNumber.Text = student.phoneNumber;
+            this.txtAddress.Text = student.address;
+            this.txtEmail.Text = student.email;
+            this.cbClass.Text = student._class.Name;
         }
+
+        //private void LoadClassesIntoComboBox()
+        //{
+        //    try
+        //    {
+        //        List<Class> classList = ClassService.GetAll(0, 10000); // Giả sử lấy tất cả lớp học
+        //        cbClass.Properties.Items.AddRange(classList.ToArray());
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Lỗi khi tải danh sách lớp học: " + ex.Message);
+        //    }
+        //} 
     }
 }
