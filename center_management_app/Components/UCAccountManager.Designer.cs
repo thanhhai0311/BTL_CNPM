@@ -145,17 +145,17 @@
             this.cNumber.Name = "cNumber";
             this.cNumber.Visible = true;
             this.cNumber.VisibleIndex = 1;
-            this.cNumber.Width = 49;
+            this.cNumber.Width = 91;
             // 
             // cAvatar
             // 
-            this.cAvatar.Caption = "Ảnh";
+            this.cAvatar.Caption = "Email";
             this.cAvatar.FieldName = "cAvatar";
             this.cAvatar.MinWidth = 23;
             this.cAvatar.Name = "cAvatar";
             this.cAvatar.Visible = true;
-            this.cAvatar.VisibleIndex = 2;
-            this.cAvatar.Width = 43;
+            this.cAvatar.VisibleIndex = 6;
+            this.cAvatar.Width = 271;
             // 
             // cName
             // 
@@ -164,8 +164,8 @@
             this.cName.MinWidth = 23;
             this.cName.Name = "cName";
             this.cName.Visible = true;
-            this.cName.VisibleIndex = 3;
-            this.cName.Width = 191;
+            this.cName.VisibleIndex = 2;
+            this.cName.Width = 233;
             // 
             // cPhoneNumber
             // 
@@ -174,8 +174,8 @@
             this.cPhoneNumber.MinWidth = 23;
             this.cPhoneNumber.Name = "cPhoneNumber";
             this.cPhoneNumber.Visible = true;
-            this.cPhoneNumber.VisibleIndex = 4;
-            this.cPhoneNumber.Width = 141;
+            this.cPhoneNumber.VisibleIndex = 5;
+            this.cPhoneNumber.Width = 220;
             // 
             // cDob
             // 
@@ -184,8 +184,8 @@
             this.cDob.MinWidth = 23;
             this.cDob.Name = "cDob";
             this.cDob.Visible = true;
-            this.cDob.VisibleIndex = 6;
-            this.cDob.Width = 124;
+            this.cDob.VisibleIndex = 4;
+            this.cDob.Width = 183;
             // 
             // cGender
             // 
@@ -194,8 +194,8 @@
             this.cGender.MinWidth = 23;
             this.cGender.Name = "cGender";
             this.cGender.Visible = true;
-            this.cGender.VisibleIndex = 5;
-            this.cGender.Width = 77;
+            this.cGender.VisibleIndex = 3;
+            this.cGender.Width = 99;
             // 
             // cStatus
             // 
@@ -205,7 +205,7 @@
             this.cStatus.Name = "cStatus";
             this.cStatus.Visible = true;
             this.cStatus.VisibleIndex = 7;
-            this.cStatus.Width = 196;
+            this.cStatus.Width = 440;
             // 
             // cbGroups
             // 

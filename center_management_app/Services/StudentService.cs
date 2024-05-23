@@ -63,6 +63,32 @@ namespace center_management_app.Services
 
         }
 
+        public static int getMaxID()
+        {
+            s_connection.Open();
+            try
+            {
+                string commandString = "SELECT MAX(ID) AS quantity FROM Students";
+                SQLiteCommand command = new SQLiteCommand(commandString, s_connection);
+                SQLiteDataReader reader = command.ExecuteReader();
+                int quantity = 0;
+                while (reader.Read())
+                {
+                    quantity = Convert.ToInt32(reader["quantity"]);
+                }
+                return quantity;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                s_connection.Close();
+            }
+
+        }
+
         public static List<Student> GetAll(int page = 0, int pageSize = 5)
         {
             s_connection.Open();
@@ -134,17 +160,13 @@ namespace center_management_app.Services
             try
             {
                 List<Student> students = new List<Student>();
-                string commandString = "SELECT * " +
-                    "FROM Students " +
-                    $"WHERE {field} LIKE @keyword " +
-                    "ORDER BY id " +
-                    "LIMIT @PageSize OFFSET @Offset;";
+                string commandString = $"SELECT st.id, st.fullName, st.dob, st.gender, st.address, st.phoneNumber, st.email, st.createdDate, st.updatedDate," +
+                    "cl.id AS clid, cl.name as clname, cl.totalStudents, cl.subject " +
+                    "FROM Students st " +
+                    "LEFT JOIN Classes cl ON cl.id = st.classId " +
+                    $"WHERE st.id = {keyword} ";
 
                 SQLiteCommand command = new SQLiteCommand(commandString, s_connection);
-                command.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
-                //command.Parameters.AddWithValue("@field", field);
-                command.Parameters.AddWithValue("@PageSize", 10);
-                command.Parameters.AddWithValue("@Offset", 0);
 
                 SQLiteDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -158,8 +180,12 @@ namespace center_management_app.Services
                         address = reader["address"].ToString(),
                         phoneNumber = reader["phoneNumber"].ToString(),
                         email = reader["email"].ToString(),
-                        CreatedDate = Convert.ToDateTime(reader["createdDate"]),
-                        UpdatedDate = Convert.ToDateTime(reader["updatedDate"])
+                        _class = new Class()
+                        {
+                            ID = reader["clid"].ToString(),
+                            Name = reader["clname"].ToString(),
+                            TotalStudent = Int32.Parse(reader["totalStudents"].ToString()),
+                        }
                     };
                     students.Add(student);
                 }
@@ -176,6 +202,8 @@ namespace center_management_app.Services
             }
         }
 
+
+
         public static bool Delete(int id)
         {
             return ExecuteQuery($"DELETE FROM Students WHERE id = '{id}'");
@@ -184,17 +212,18 @@ namespace center_management_app.Services
 
         public static bool Update(Student student)
         {
+            int gender = student.gender == "Nam" ? 1 : 0;
+
             string query = $"UPDATE Students " +
                 $"SET classId = {student._class.ID}, " +
                 $"fullName = '{student.fullName}', " +
-                $"dob = {student.dob}, " +
-                $"gender = {student.gender}, " +
+                $"dob = '{student.dob.ToString("yyyy-MM-dd")}', " +
+                $"gender = {gender}, " +
                 $"address = '{student.address}', " +
                 $"phoneNumber = '{student.phoneNumber}', " +
-                $"email = '{student.email}', " +
-                $"createdDate = {student.CreatedDate}, " +
-                $"updatedDate = {student.UpdatedDate} " +
-                $"WHERE id = {student.ID}";
+                $"email = '{student.email}' " +
+                $"WHERE id = {Convert.ToInt32(student.ID)} ;";
+
             return ExecuteQuery(query);
         }
 

@@ -77,5 +77,10 @@ namespace center_management_app.Forms
         {
 
         }
+
+        private void txtFullName_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

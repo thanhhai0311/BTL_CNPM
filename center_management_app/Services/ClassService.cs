@@ -100,7 +100,39 @@ namespace center_management_app.Services
             s_connection.Open();
             try
             {
-                return null;
+                int _page = Convert.ToBoolean(page) && page >= 0 ? page : 0;
+                List<Class> classes = new List<Class>();
+                string commandString = "SELECT c.id, c.name, c.createdDate, c.totalStudents, c.subject, COUNT(s.id) AS current, " +
+                    "t.id AS teacherId, t.fullName AS teacherFullName, t.dob AS teacherDob, t.gender AS teacherGender, " +
+                    "t.address AS teacherAddress, t.phoneNumber AS teacherPhoneNumber, t.email AS teacherEmail " +
+                    "FROM Classes c " +
+                    "LEFT JOIN Students s ON s.classId = c.id " +
+                    "LEFT JOIN Teachers t ON c.teacherId = t.id " +
+                    "WHERE c.name LIKE @keyword " +
+                    "GROUP BY c.id " +
+                    "ORDER BY c.createdDate ASC " +
+                    (Convert.ToBoolean(pageSize) && pageSize > 0 && _page >= 0 ? "LIMIT " + _page * pageSize + ", " + pageSize : "") +
+                    ";";
+
+                SQLiteCommand command = new SQLiteCommand(commandString, s_connection);
+                command.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader["id"].ToString() != null)
+                    {
+                        var _class = new Class()
+                        {
+                            ID = reader["id"].ToString(),
+                            Name = reader["name"].ToString(),
+                        };
+                        classes.Add(_class);
+                    }
+                }
+
+                return classes;
             }
             catch (Exception e)
             {
@@ -137,6 +169,62 @@ namespace center_management_app.Services
         public static bool Delete(string ID)
         {
             return true;
+        }
+
+        public static Class FindByID(int ID)
+        {
+            s_connection.Open();
+            try
+            {
+                string commandString = "SELECT c.id, c.name, c.createdDate, c.totalStudents, c.subject, COUNT(s.id) AS current, " +
+                    "t.id AS teacherId, t.fullName AS teacherFullName, t.dob AS teacherDob, t.gender AS teacherGender, " +
+                    "t.address AS teacherAddress, t.phoneNumber AS teacherPhoneNumber, t.email AS teacherEmail " +
+                    "FROM Classes c " +
+                    "LEFT JOIN Students s ON s.classId = c.id " +
+                    "LEFT JOIN Teachers t ON c.teacherId = t.id " +
+                    "WHERE c.id = @ID;";
+
+                SQLiteCommand command = new SQLiteCommand(commandString, s_connection);
+                command.Parameters.AddWithValue("@ID", ID);
+
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    var _class = new Class()
+                    {
+                        ID = reader["id"].ToString(),
+                        Name = reader["name"].ToString(),
+                        TotalStudent = Int32.Parse(reader["totalStudents"].ToString()),
+                        CreatedDate = Convert.ToDateTime(reader["createdDate"].ToString()),
+                        //current = Int32.Parse(reader["current"].ToString()),
+                        //subject = reader["subject"].ToString(),
+                        teacher = new Teacher()
+                        {
+                            ID = reader["teacherId"].ToString(),
+                            fullName = reader["teacherFullName"].ToString(),
+                            dob = Convert.ToDateTime(reader["teacherDob"].ToString()),
+                            //gender = int.Parse(reader["teacherGender"].ToString()),
+                            address = reader["teacherAddress"].ToString(),
+                            phoneNumber = reader["teacherPhoneNumber"].ToString(),
+                            email = reader["teacherEmail"].ToString()
+                        }
+                    };
+                    return _class;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                s_connection.Close();
+            }
         }
     }
 }

@@ -9,16 +9,18 @@ using center_management_app.Components;
 
 namespace center_management_app.Forms
 {
-    public partial class AddStudentsForm : XtraForm
+    public partial class EditStudent : XtraForm
     {
-        public AddStudentsForm()
+        private string id_class = "0";
+        private string name_class = "english";
+        public EditStudent()
         {
             InitializeComponent();
+            this.txtID.Text = Convert.ToString(StudentService.getMaxID() + 1);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            //txtID.Text = Convert.ToString(StudentService.getMaxID() + 1);
         }
-            
+
         private void AddAccounts_Paint(object sender, PaintEventArgs e)
         {
         }
@@ -26,10 +28,12 @@ namespace center_management_app.Forms
         private void AddAccounts_Load(object sender, EventArgs e)
         {
             var allClasses = ClassService.GetAll();
+
             foreach (var _class in allClasses)
             {
                 cbClass.Properties.Items.Add(_class);
             }
+
         }
 
         private void labelControl7_Click(object sender, EventArgs e)
@@ -49,14 +53,13 @@ namespace center_management_app.Forms
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             // Thực thi khi Button được nhấp
             this.Close();
-           
         }
 
         private void comboBoxEdit2_SelectedIndexChanged(object sender, EventArgs e)
@@ -81,18 +84,18 @@ namespace center_management_app.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+
             // Thực thi khi Button được nhấp
-            string name = txtFullName.Text.Trim();
-            string gender = cbGender.Text;
-            DateTime dob = cbDob.DateTime;
-            string phoneNumber = txtPhoneNumber.Text.Trim();
-            string address = txtAddress.Text.Trim();
-            string email = txtEmail.Text.Trim();
-            Class selectedClass = cbClass.SelectedItem as Class;
-            //string lop = comboBoxEdit2.SelectedItem.ToString();
-            //MessageBox.Show(lop);
-            //public Student(string phoneNumber, string fullName, string gender, string address, DateTime dob, Class @class)
-            //MessageBox.Show(selectedClass.ToString());
+            string id = this.txtID.Text.Trim();
+            string name = this.txtFullName.Text.Trim();
+            string gender = this.cbGender.Text;
+            DateTime dob = this.cbDob.DateTime;
+            string phoneNumber = this.txtPhoneNumber.Text.Trim();
+            string address = this.txtAddress.Text.Trim();
+            string email = this.txtEmail.Text.Trim();
+            List<Class> cls = ClassService.FindByName(cbClass.SelectedItem.ToString());
+            Class selectedClass = cls[0];
+
             // Kiểm tra các trường dữ liệu
             if (string.IsNullOrEmpty(name))
             {
@@ -142,19 +145,12 @@ namespace center_management_app.Forms
                 return;
             }
 
-            //if (selectedClass.TotalStudent < 1)
-            //{
-            //    MessageBox.Show("Lớp học đã đủ học viên, vui lòng chọn lớp học khác!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
-            //public Student(string fullName, string gender, DateTime dob, string phoneNumber, string email, string address, Class @class)
             Student newStudent = new Student(name, gender, dob, phoneNumber, email, address, selectedClass);
+            newStudent.ID = id;
 
-            //StudentService.Add(newStudent);
+            MessageBox.Show(newStudent.ToString(), "Xác Nhận Thông Tin!!");
 
-            //DialogResult result = MessageBox.Show(newStudent.ToString());
-            bool result = StudentService.Add(newStudent);
+            bool result = StudentService.Update(newStudent);
             //MessageBox.Show(result.ToString());
 
 
@@ -162,17 +158,14 @@ namespace center_management_app.Forms
 
             if (result)
             {
-                //selectedClass.TotalStudent -= 1;
                 UCAccountManager.Instance.LoadData();
-
-                result1 = MessageBox.Show("Thêm học viên thành công!");
+                result1 = MessageBox.Show("Sửa học viên thành công!");
                 //this.Close();
                 if (result1 == DialogResult.OK)
                 {
                     this.Close();
                 }
             }
-
         }
 
         private void cbDob_EditValueChanged(object sender, EventArgs e)
@@ -185,18 +178,41 @@ namespace center_management_app.Forms
             btnAdd.Text = newName;
         }
 
-        public AddStudentsForm(Student student)
+        public EditStudent(Student student)
         {
             InitializeComponent();
             this.txtID.Text = student.ID.ToString();
-            this.txtFullName.Text = student.fullName.ToString();
-            this.cbGender.EditValue = student.gender.ToString();
-            this.cbDob.EditValue = Convert.ToDateTime(student.dob);  
-            this.txtPhoneNumber.Text = student.phoneNumber.ToString();
-            this.txtAddress.Text = student.address.ToString();
-            this.txtEmail.Text = student.email.ToString();
-            //this.cbClass.Text = ClassService.FindByID(student._class.ID).ToString();
-            this.cbClass.EditValue = student._class.Name.ToString();
+            this.txtFullName.Text = student.fullName;
+            this.cbGender.Text = student.gender.ToString();
+            this.cbDob.EditValue = Convert.ToDateTime(student.dob);
+            this.txtPhoneNumber.Text = student.phoneNumber;
+            this.txtAddress.Text = student.address;
+            this.txtEmail.Text = student.email;
+            this.cbClass.EditValue = student._class.Name;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.id_class = student._class.ID;
+            this.name_class = student._class.Name;
+            this.MaximizeBox = false;
+        }
+
+        private void panelControl2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelControl1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lbcDob_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbcGender_Click(object sender, EventArgs e)
+        {
+
         }
 
         //private void LoadClassesIntoComboBox()

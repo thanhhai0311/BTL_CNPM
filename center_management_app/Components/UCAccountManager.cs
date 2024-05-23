@@ -48,6 +48,7 @@ namespace center_management_app.Components
             {
                 new DataColumn(nameof(cNumber), typeof(int)),
                 new DataColumn(nameof(cName), typeof(string)),
+                new DataColumn(nameof(cAvatar), typeof(string)),
                 new DataColumn(nameof(cPhoneNumber), typeof(string)),
                 new DataColumn(nameof(cGender), typeof(string)),
                 new DataColumn(nameof(cDob), typeof(string)),
@@ -65,6 +66,7 @@ namespace center_management_app.Components
             newRow["cPhoneNumber"] = stu.phoneNumber;
             newRow["cGender"] = stu.gender;
             newRow["cDob"] = stu.dob.ToString("dd/MM/yyyy");
+            newRow["cAvatar"] = stu.email;
             newRow["cStatus"] = stu._class.Name;
             tableDataSource.Rows.Add(newRow);
         }
@@ -84,7 +86,7 @@ namespace center_management_app.Components
         {
             tableDataSource.Clear();
             int sl = StudentService.getSize();
-            List<Student> list = StudentService.GetAll(0, 100000);
+            List<Student> list = StudentService.GetAll(0, sl);
             foreach (Student stu in list)
             {
                 AddStudent(stu);
@@ -114,20 +116,12 @@ namespace center_management_app.Components
             {
                 DataRowView row = (DataRowView)gridView1.GetRow(selected[0]);
                 var studentID = row[nameof(cNumber)].ToString();
-                if (!String.IsNullOrEmpty(studentID))
-                {
-                    // student in database
-                    var AddForm = new AddStudentsForm();
-                    AddForm.Text = "Chỉnh sửa thông tin học viên";
-                    AddForm.SetButtonName("Lưu");
-                    var list = StudentService.FindByID(studentID);
-                    var st = list[0];
-                    MessageBox.Show(st.ToString());
-                    var addForm = new AddStudentsForm(st);
-                    AddForm.ShowDialog();
-                    
 
-                }
+                var list = StudentService.FindByID(studentID);
+                var st = list[0];
+                var AddForm = new EditStudent(st);
+                AddForm.Text = "Chỉnh sửa thông tin học viên";
+                AddForm.ShowDialog();
             }
             else
             {
